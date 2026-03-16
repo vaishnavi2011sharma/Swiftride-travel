@@ -1,12 +1,1 @@
-﻿{
-  "name": "swiftride-travel",
-  "version": "1.0.0",
-  "description": "SwiftRide Travel Website",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "^4.18.2"
-  }
-}
+﻿{"name":"swiftride-travel","version":"1.0.0","description":"SwiftRide Travel Website","main":"server.js","scripts":{"start":"node server.js"},"dependencies":{"express":"^4.18.2"}}

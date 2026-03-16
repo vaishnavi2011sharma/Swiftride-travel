@@ -1,4 +1,4 @@
-﻿const express = require('express');
+const express = require('express');
 const path = require('path');
 const app = express();
 
@@ -16,7 +16,7 @@ const vehicles = [
 ];
 
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok' });
+  res.json({ status: 'ok', server: 'SwiftRide Travel API' });
 });
 
 app.get('/api/vehicles', (req, res) => {
@@ -25,7 +25,7 @@ app.get('/api/vehicles', (req, res) => {
 
 app.post('/api/search', (req, res) => {
   const { from, to, date, vehicleType } = req.body;
-  if (!from || !to) return res.status(400).json({ success: false, message: 'From and To required.' });
+  if (!from || !to) return res.status(400).json({ success: false, message: 'From and To are required.' });
   let results = vehicles;
   if (vehicleType) results = vehicles.filter(v => v.type.toLowerCase().includes(vehicleType.toLowerCase()));
   res.json({ success: true, from, to, date, vehicles: results });
@@ -34,15 +34,18 @@ app.post('/api/search', (req, res) => {
 app.post('/api/enquiry', (req, res) => {
   const { name, phone, from, to, vehicle, message } = req.body;
   if (!name || !phone) return res.status(400).json({ success: false, message: 'Name and phone required.' });
-  const enquiry = { id: Date.now(), name, phone, from, to, vehicle, message };
+  const enquiry = { id: Date.now(), name, phone, from, to, vehicle, message, createdAt: new Date().toISOString() };
   console.log('[ENQUIRY]', enquiry);
-  res.json({ success: true, message: 'Thank you ' + name + '! We will call you at ' + phone + ' within 15 minutes.' });
+  res.json({ success: true, message: `Thank you ${name}! We'll call you at ${phone} within 15 minutes.`, enquiryId: enquiry.id });
 });
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log('SwiftRide running at http://localhost:' + PORT));
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`SwiftRide running at http://localhost:${PORT}`));
+}
 
+module.exports = app;
