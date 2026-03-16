@@ -38,7 +38,9 @@ app.post('/api/enquiry', (req, res) => {
   console.log('[ENQUIRY]', enquiry);
   res.json({ success: true, message: `Thank you ${name}! We'll call you at ${phone} within 15 minutes.`, enquiryId: enquiry.id });
 });
-
+app.get('/swiftride/travel-in-noida', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'travel-in-noida.html'));
+});
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
