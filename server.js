@@ -5,7 +5,6 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API routes
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
@@ -16,7 +15,12 @@ app.post('/api/search', (req, res) => {
 
 app.post('/api/enquiry', (req, res) => {
   const { name, phone } = req.body;
-  res.json({ success: true, message: `Thank you ${name}! We will call you at ${phone} within 15 minutes.` });
+  res.json({ success: true, message: `Thank you ${name}! We will call you within 15 minutes.` });
+});
+
+// Chennai page
+app.get('/swiftride/travel-in-chennai', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'travel-in-chennai.html'));
 });
 
 // Catch all
