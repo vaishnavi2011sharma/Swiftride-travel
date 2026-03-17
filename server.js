@@ -22,7 +22,10 @@ app.post('/api/enquiry', (req, res) => {
 app.get('/swiftride/travel-in-chennai', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'travel-in-chennai.html'));
 });
-
+// Rameswaram page
+app.get('/swiftride/travel-in-rameswaram', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'travel-in-rameswaram.html'));
+});
 // Catch all
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
