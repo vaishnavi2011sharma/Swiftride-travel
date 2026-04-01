@@ -249,7 +249,7 @@ const PhoneIcon = () => (
 
 /* ─── PAGE ─── */
 export default function KanpurTempoPage() {
-  const toastRef = useRef<ToastHandle>(null)
+  const toastRef = useRef(null)
   const bookingRef = useRef<HTMLDivElement>(null)
   const [selectedVehicle, setSelectedVehicle] = useState('Select Vehicle')
 
