@@ -2,10 +2,10 @@
 
 import { useRef, useState, useCallback } from 'react'
 import Link from 'next/link'
-import Navbar from '../components/Navbar'
-import BookingCard from '../components/BookingCard'
-import Footer from '../components/Footer'
-import Toast from '../components/Toast'
+import Navbar from './src/components/Navbar'
+import BookingCard from './src/components/BookingCard'
+import Footer from './src/components/Footer'
+import Toast from './src/components/Toast'
 
 /* ─── DATA ─── */
 const VEHICLES = [
