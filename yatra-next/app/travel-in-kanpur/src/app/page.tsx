@@ -254,7 +254,7 @@ export default function KanpurTempoPage() {
   const [selectedVehicle, setSelectedVehicle] = useState('Select Vehicle')
 
   const showToast = useCallback((msg: string) => {
-    toastRef.current?.show(msg)
+    toastRef.current?.showToast(msg)
   }, [])
 
   const scrollToBooking = useCallback(() => {
